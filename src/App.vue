@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <h2>My todolist</h2>
-    <AddTodo v-on:add-todo="addTodo"/>
-    <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo"/>
+    <AddTodo @add-todo="addTodo"/>
+    <Todos :todos="todos" @delete-todo="deleteTodo" @todo-clicked="saveTodos"/>
   </div>
 </template>
 
@@ -18,41 +18,32 @@
     },
     data() {
       return {
-        todos: [
-          {
-            id: 1,
-            title: 'Go workout',
-            completed: false
-          },
-          {
-            id: 2,
-            title: 'Do laundry',
-            completed: false
-          },
-          {
-            id: 3,
-            title: 'Cook food',
-            completed: false
-          },
-          {
-            id: 4,
-            title: 'Clean up room',
-            completed: false
-          },
-          {
-            i: 5,
-            title: 'Finish work',
-            completed: false
-          }
-        ],
+        todos: []
+      }
+    },
+    mounted() {
+      if(localStorage.getItem('todos')) {
+        try {
+          this.todos = JSON.parse(localStorage.getItem('todos'));
+        } catch(e) {
+          localStorage.removeItem('todos');
+        }
       }
     },
     methods: {
-      addTodo(newTodoObj) {
-        this.todos = [...this.todos, newTodoObj];
+      addTodo(newTodo) {
+        if(newTodo.title) {
+          this.todos.push(newTodo);
+          this.saveTodos();
+        }
       },
       deleteTodo(todoId) {
         this.todos = this.todos.filter(todo => todo.id != todoId);
+        this.saveTodos();
+      },
+      saveTodos() {
+        const parsed = JSON.stringify(this.todos);
+        localStorage.setItem('todos', parsed);
       }
     }
   }

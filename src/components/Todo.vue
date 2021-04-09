@@ -1,6 +1,6 @@
 <template>
   <div class="todo-row">
-    <p v-bind:class="{ 'completed': todo.completed }" @click="markComplete">{{ todo.title }}</p>
+    <p :class="{ 'completed': todo.completed }" @click="markComplete">{{ todo.title }}</p>
     <button @click="$emit('delete-todo', todo.id)">X</button>
   </div>
 </template>
@@ -14,6 +14,7 @@ export default {
   methods: {
     markComplete() {
       this.todo.completed = !this.todo.completed;
+      this.$emit("todo-clicked");
     }
   }
 }

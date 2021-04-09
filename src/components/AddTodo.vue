@@ -42,7 +42,9 @@ export default {
 input {
   box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
   font-size: 15px;
-  height: 30px;
+  width: 250px;
+  height: 40px;
+  padding-left: 8px;
   border-radius: 10px;
   margin-right: 20px;
 }
