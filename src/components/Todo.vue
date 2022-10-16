@@ -5,8 +5,12 @@
       <div class="todo-elements">
         <p :class="{ 'completed': todo.completed }" @click="markComplete">{{ todo.title }}</p>
         <div>
-          <button @click="editMode = true">Edit</button>
-          <button @click="$emit('delete-todo', todo.id)">X</button>
+          <button @click="editMode = true">
+            <i class="fa-sharp fa-solid fa-pencil"></i>
+          </button>
+          <button @click="$emit('delete-todo', todo.id)">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
         </div>
       </div>
       <p class="timeStamp">{{ todo.timeStamp }}</p>
@@ -15,8 +19,12 @@
       <div class="todo-elements">
         <input type="text" v-model="todo.title">
         <div>
-          <button @click="editMode = false">Ok</button>
-          <button @click="onCancleClicked">Cancel</button>
+          <button @click="editMode = false">
+            <i class="fa-solid fa-check"></i>
+          </button>
+          <button @click="onCancleClicked">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
       </div>
       <p class="timeStamp">{{ todo.timeStamp }}</p>
