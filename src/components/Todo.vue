@@ -1,7 +1,7 @@
 <template>
   
   <div class="todo-row">
-    <div v-if="!editMode">
+    <div class="todo-cont" v-if="!editMode">
       <div class="todo-elements">
         <p :class="{ 'completed': todo.completed }" @click="markComplete">{{ todo.title }}</p>
         <div>
@@ -11,7 +11,7 @@
       </div>
       <p class="timeStamp">{{ todo.timeStamp }}</p>
     </div>
-    <div v-else>
+    <div class="todo-cont" v-else>
       <div class="todo-elements">
         <input type="text" v-model="todo.title">
         <div>
@@ -63,8 +63,13 @@ export default {
     display: flex;
     justify-content: space-between;
   }
+  .todo-cont {
+    padding-bottom: 10px;
+  }
   .timeStamp {
-    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 12px;
   }
   p {
     margin-left: 10px;
