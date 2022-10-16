@@ -2,7 +2,9 @@
   <div>
     <form @submit="addTodo">
       <input placeholder="Do something..." type="text" v-model="title" name="title">
-      <button type="submit">+</button>
+      <button type="submit">
+        <i class="fa-solid fa-plus"></i>  
+      </button>
     </form>
   </div>
 </template>
