@@ -11,12 +11,15 @@
       </div>
       <p class="timeStamp">{{ todo.timeStamp }}</p>
     </div>
-    <div class="todo-elements" v-else>
-      <input type="text" v-model="todo.title">
-      <div>
-        <button @click="editMode = false">Ok</button>
-        <button @click="onCancleClicked">Cancel</button>
+    <div v-else>
+      <div class="todo-elements">
+        <input type="text" v-model="todo.title">
+        <div>
+          <button @click="editMode = false">Ok</button>
+          <button @click="onCancleClicked">Cancel</button>
+        </div>
       </div>
+      <p class="timeStamp">{{ todo.timeStamp }}</p>
     </div>
   </div>
 </template>
