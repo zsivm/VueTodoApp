@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <h2>My todolist</h2>
+    <Banner :lists="lists"/>
+    <h2>Todo App</h2>
     <AddTodo @add-todo="addTodo"/>
     <Todos :todos="todos" @delete-todo="deleteTodo" @todo-clicked="saveTodos"/>
   </div>
@@ -52,9 +53,19 @@
 <style scoped>
   #app {
     margin: auto;
-    width: 50%;
+    width: 80%;
+    height: 80%;
+    min-height: 60%;
+    max-height: 100%;
+    min-width: 60%;
+    max-width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    margin-top: 50px;
+    padding: 5px 20px 5px 20px;
   }
   h2 {
-    text-align: center;
+    font-size: 38px;
+    font-family: Roboto, sans-serif;
   }
 </style>
