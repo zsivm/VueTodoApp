@@ -1,8 +1,8 @@
 <template>
-  <div class="form-wrapper">
+  <div>
     <form @submit="addTodo">
       <input placeholder="Do something..." type="text" v-model="title" name="title">
-      <button type="submit">Add</button>
+      <button type="submit">+</button>
     </form>
   </div>
 </template>
@@ -24,7 +24,8 @@ export default {
       const newTodoObj = {
         id: uuidv4(),
         title: this.title,
-        completed: false
+        completed: false,
+        timeStamp: new Date().toISOString().split("T")[0]
       }
 
       this.$emit('add-todo', newTodoObj);
@@ -35,14 +36,15 @@ export default {
 </script>
 
 <style scoped>
-.form-wrapper {
+form {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 input {
   box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+  min-width: 50%;
   font-size: 15px;
-  width: 250px;
   height: 40px;
   padding-left: 8px;
   border-radius: 10px;
@@ -52,5 +54,7 @@ button {
   box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   height: 35px;
+  font-size: 30px;
+  line-height: 0;
 }
 </style>
